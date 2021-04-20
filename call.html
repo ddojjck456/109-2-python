@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = [
+        { name: "Html", price: 100 },
+        { name: "Php", price: 150 },
+        { name: "Javascript", price: 180 },
+      ];
+
+      class user {
+        constructor(data) {
+          this.model = data;
+        }
+
+        get price() {
+          return this.model.price;
+        }
+        static createObj(data) {
+          return data.map((item) => new user(item));
+        }
+        static maxPrice(data) {
+          return data.sort((a, b) => b.price - a.price)[0];
+        }
+        static sumPrice(data){
+            return data.reduce((t,c)=>{
+                return t+ c.price;
+            },0)
+        }
+      }
+      let tt = user.createObj(data);
+    //   console.log(tt);
+    //   console.log(user.maxPrice(tt).price);
+      console.log(user.sumPrice(tt));
+    </script>
+  </body>
+</html>
